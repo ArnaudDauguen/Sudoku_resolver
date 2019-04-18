@@ -8,9 +8,10 @@ public class bigCase {
 	private int[][] potentialsValuesForColumns = new int[1][3];
 	private int[][] potentialsValuesForLines = new int[1][3];
 	
-	
-	
-	
+	public bigCase() {
+		
+	}
+
 	/*
 	une case :
 	
@@ -21,7 +22,7 @@ public class bigCase {
 		[[int], [int], [int]] potialsValuesForLines
 		
 		
-	méthodes
+	mÃ©thodes
 		getLine(x)               //getLine(simpleCase.getposX())
 		getColumn(y)
 		

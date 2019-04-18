@@ -18,6 +18,27 @@ public class simpleCase {
 	
 	
 	
+	// Getters && Setters
+	
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	
+	
+	
 	/*
 	une case :
 	
@@ -28,12 +49,12 @@ public class simpleCase {
 		int posY
 		
 		
-	méthodes
+	mÃ©thodes
 		setValue
 		getValue
 		getPosX
 		getPosY
-		regarder le gros carré
+		regarder le gros carrï¿½
 			
 		
 	
