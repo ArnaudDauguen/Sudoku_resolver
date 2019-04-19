@@ -1,7 +1,6 @@
 package beans;
 
 public class simpleCase {
-
 	
 	private int value;
 	private int posX;
@@ -15,8 +14,6 @@ public class simpleCase {
 		this.posY = posY;
 		
 	}
-	
-	
 	
 	// Getters && Setters
 	
@@ -35,31 +32,13 @@ public class simpleCase {
 	public int getPosY() {
 		return posY;
 	}
+	
+	public void setPotentials(int[] potentials) {
+		this.potentials = potentials;
+	}
+	
+	public int[] getPotentials() {
+		return potentials;
+	}
 
-	
-	
-	
-	/*
-	une case :
-	
-	champs
-		int value
-		[int] liste de pententielles nombre
-		int posX
-		int posY
-		
-		
-	méthodes
-		setValue
-		getValue
-		getPosX
-		getPosY
-		regarder le gros carr�
-			
-		
-	
-	
-	
-	
-	*/
 }
