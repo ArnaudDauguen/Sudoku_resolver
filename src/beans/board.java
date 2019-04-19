@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.ArrayList;
+
 public class board {
 	
 	private int[][] sudoBoard = {
@@ -16,6 +18,25 @@ public class board {
 	    {7,3,0,0,6,0,0,0,0}
 	};
 	
+	private simpleCase[][] tab = new simpleCase[9][9];
+	// Constructor
+	
+	public board() {
+		
+	}
+	
+	// Methods
+	
+	private void createSimpleCaseGreed() {
+		for(int x = 0; x < 9; x++) {
+			for(int y = 0; y < 9; y++) {
+				tab[x][y] = new simpleCase(sudoBoard[x][y], x, y);
+			}
+		}
+	}
+	
+	// Getters && Setters
+	
 	public board(int[][] board) {
 		this.sudoBoard = board;
 	}
@@ -28,6 +49,12 @@ public class board {
 		this.sudoBoard = sudoBoard;
 	}
 	
-	
+	public simpleCase[][] getTab() {
+		return tab;
+	}
 
+	public void setTab(simpleCase[][] tab) {
+		this.tab = tab;
+	}
+	
 }

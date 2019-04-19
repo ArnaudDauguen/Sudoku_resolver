@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 public class bigCase {
 
-	
 	private simpleCase[][] cases = new simpleCase[3][3];
 	
 	private ArrayList<Integer> potentialsValuesForColumns1 = new ArrayList<Integer>();
@@ -16,8 +15,8 @@ public class bigCase {
 	private ArrayList<Integer> potentialsValuesForLines3 = new ArrayList<Integer>();
 	
 	
-	//constructor
-	public bigCase() {
+	// Constructor
+	public bigCase(ArrayList<simpleCase> casesList) {
 		for(int i = 1; i <= 9; i++) {
 			potentialsValuesForColumns1.add(i);
 			potentialsValuesForColumns2.add(i);
