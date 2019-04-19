@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class bigCase {
 
+	
 	private simpleCase[][] cases = new simpleCase[3][3];
 	
 	private ArrayList<Integer> potentialsValuesForColumns1 = new ArrayList<Integer>();
@@ -15,7 +16,7 @@ public class bigCase {
 	private ArrayList<Integer> potentialsValuesForLines3 = new ArrayList<Integer>();
 	
 	
-	// Constructor
+	//constructor
 	public bigCase(ArrayList<simpleCase> casesList) {
 		for(int i = 1; i <= 9; i++) {
 			potentialsValuesForColumns1.add(i);
@@ -26,18 +27,43 @@ public class bigCase {
 			potentialsValuesForLines3.add(i);
 		}
 		
+		// mise en place des petits carrés
+		for(int x = 0; x < 3; x++) {
+			for(int y = 0; y < 3; y++) {
+				cases[x][y] = casesList.get(x + y);
+			}
+		}
+		
 	}
 	
 	
 	
 	
 	public ArrayList<Integer> getLine(int x) {
-		return new ArrayList<Integer>(Arrays.asList(cases[x][0].getValue(), cases[x][1].getValue(), cases[x][2].getValue()));
+		ArrayList<Integer> listL = new ArrayList<Integer>();
+		for(int i = 0; i < 3; i++) {
+			listL.add(cases[x][i].getValue());
+		}
+		return listL;
 	}
 	
 	public ArrayList<Integer> getColumn(int y) {
-		return new ArrayList<Integer>(Arrays.asList(cases[0][y].getValue(), cases[1][y].getValue(), cases[2][y].getValue()));
+		ArrayList<Integer> listC = new ArrayList<Integer>();
+		for(int i = 0; i < 3; i++) {
+			listC.add(cases[i][y].getValue());
+		}
+		return listC;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	/*
