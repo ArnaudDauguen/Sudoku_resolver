@@ -9,9 +9,12 @@ public class simpleCase {
 	private int posX;
 	private int posY;
 	
-	private ArrayList<Integer> potentials = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+	private ArrayList<Integer> potentials = new ArrayList<Integer>();
 	
 	public simpleCase(int value, int posX, int posY) {
+		for(int i = 1; i <= 9; i++) {
+			potentials.add(i);
+		}
 		this.value = value;
 		this.posX = posX;
 		this.posY = posY;

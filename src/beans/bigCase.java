@@ -8,17 +8,24 @@ public class bigCase {
 	
 	private simpleCase[][] cases = new simpleCase[3][3];
 	
-	private ArrayList<Integer> potentialsValuesForColumns1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-	private ArrayList<Integer> potentialsValuesForLines1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-	private ArrayList<Integer> potentialsValuesForColumns2 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-	private ArrayList<Integer> potentialsValuesForLines2 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-	private ArrayList<Integer> potentialsValuesForColumns3 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-	private ArrayList<Integer> potentialsValuesForLines3 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+	private ArrayList<Integer> potentialsValuesForColumns1 = new ArrayList<Integer>();
+	private ArrayList<Integer> potentialsValuesForLines1 = new ArrayList<Integer>();
+	private ArrayList<Integer> potentialsValuesForColumns2 = new ArrayList<Integer>();
+	private ArrayList<Integer> potentialsValuesForLines2 = new ArrayList<Integer>();
+	private ArrayList<Integer> potentialsValuesForColumns3 = new ArrayList<Integer>();
+	private ArrayList<Integer> potentialsValuesForLines3 = new ArrayList<Integer>();
 	
 	
 	//constructor
 	public bigCase() {
-		
+		for(int i = 1; i <= 9; i++) {
+			potentialsValuesForColumns1.add(i);
+			potentialsValuesForColumns2.add(i);
+			potentialsValuesForColumns3.add(i);
+			potentialsValuesForLines1.add(i);
+			potentialsValuesForLines2.add(i);
+			potentialsValuesForLines3.add(i);
+		}
 		
 	}
 	
