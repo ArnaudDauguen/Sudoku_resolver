@@ -10,7 +10,6 @@ public class simpleCase {
 	
 	private ArrayList<Integer> potentials = new ArrayList<Integer>();
 	
-	// Constructeur
 	public simpleCase(int value, int posX, int posY) {
 		for(int i = 1; i <= 9; i++) {
 			potentials.add(i);
@@ -20,6 +19,8 @@ public class simpleCase {
 		this.posY = posY;
 		
 	}
+	
+	
 	
 	// Getters && Setters
 	

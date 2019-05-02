@@ -8,26 +8,20 @@ public class bigCase {
 	
 	private simpleCase[][] cases = new simpleCase[3][3];
 	
-	private ArrayList<Integer> potentialsValuesForColumns1 = new ArrayList<Integer>();
-	private ArrayList<Integer> potentialsValuesForLines1 = new ArrayList<Integer>();
-	private ArrayList<Integer> potentialsValuesForColumns2 = new ArrayList<Integer>();
-	private ArrayList<Integer> potentialsValuesForLines2 = new ArrayList<Integer>();
-	private ArrayList<Integer> potentialsValuesForColumns3 = new ArrayList<Integer>();
-	private ArrayList<Integer> potentialsValuesForLines3 = new ArrayList<Integer>();
+	private int[][][] potentilasValues = new int[3][3][9];
 	
 	
-	// Constructeur
+	//constructor
 	public bigCase(ArrayList<simpleCase> casesList) {
-		for(int i = 1; i <= 9; i++) {
-			potentialsValuesForColumns1.add(i);
-			potentialsValuesForColumns2.add(i);
-			potentialsValuesForColumns3.add(i);
-			potentialsValuesForLines1.add(i);
-			potentialsValuesForLines2.add(i);
-			potentialsValuesForLines3.add(i);
+		for(int l = 0; l < 3; l++) {
+			for(int c = 0; c < 3; c++) {
+				for(int nb = 1; nb <= 9; nb++) {
+					potentilasValues[l][c][nb-1] = nb; 
+				}
+			}
 		}
 		
-		// Mise en place des simpleCases
+		// mise en place des petits carrés
 		for(int x = 0; x < 3; x++) {
 			for(int y = 0; y < 3; y++) {
 				cases[x][y] = casesList.get(x + y);
@@ -36,7 +30,8 @@ public class bigCase {
 		
 	}
 	
-	// Methods
+	
+	
 	
 	public ArrayList<Integer> getLine(int x) {
 		ArrayList<Integer> listL = new ArrayList<Integer>();
@@ -59,38 +54,30 @@ public class bigCase {
 	
 	
 	
+	public void cleanLine(int l, int value) {
+		for(int c = 0; c < 3; c++) {
+			potentilasValues[l][c][value -1] = 0; 
+		}
+	}
 	
+	public void cleanColumn(int c, int value) {
+		for(int l = 0; l < 3; l++) {
+			potentilasValues[l][c][value -1] = 0; 
+		}
+	}
 	
 	
 	
 	
 
-	/*
-	une case :
-	
-	champs
-		[pttcase]
-		
-		[[int], [int], [int]] potialsValuesForColumns
-		[[int], [int], [int]] potialsValuesForLines
-		
-		
-	mÃ©thodes
-		getLine(x)               //getLine(simpleCase.getposX())
-		getColumn(y)
-		
-		blockColumn(int colone) => [int] (regarder chaques cases pour bloquer)
-		blockLine(int line) => [int] (regarder chaques cases pour bloquer)
-			
-		
 	
 	
 	
 	
-	*/
 	
-	
-	
+	public simpleCase[][] getsimpleCases(){
+		return cases;
+	}
 	
 	
 	
