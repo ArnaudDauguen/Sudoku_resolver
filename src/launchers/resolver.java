@@ -11,6 +11,7 @@ public class resolver {
 	private board sudoBoard;
 	private bigCase[][] bigCases = new bigCase[3][3];
 	
+	// Constructeur
 	public resolver() {
 		for(int x = 0; x < 3; x++) {
 			for(int y = 0; y < 3; y++) {
@@ -32,22 +33,29 @@ public class resolver {
 		  resolver solver = new resolver();
 		  
 		  while(true) {
+			  // Pour les nombres entre 1 et 9 inclus
 			  for(int nb = 1; nb < 10; nb++) {
 				  
+				  // Nettoyage colonne
 				  for(int c = 0; c < 9; c++) {
 					  if(solver.checkIfIsInTheColumn(c, nb)) solver.cleanColumn(c, nb);
 				  }
-				  
+				  // Nettoyage ligne
 				  for(int l = 0; l < 9; l++) {
 					  if(solver.checkIfIsInTheLine(l, nb)) solver.cleanLine(l, nb);
 				  }
-				  
+				  // Nettoyage gros carré
 				  for(int c = 0; c < 3; c++) {
 					  for(int l = 0; l < 3; l++) {
 						  if(solver.checkBigSquarre(c, l, nb)) solver.cleanBigSquarre(c, l, nb);
 					  }
+				  } 
+				  // Parcours toutes les cases
+				  for(int c = 0; c < 9; c++) {
+					  for(int l = 0; l < 9; l++) {
+						 
+					  }
 				  }
-				  
 			  }
 		  }
 	}
@@ -56,6 +64,7 @@ public class resolver {
  
 	// Methods
 	
+	// Regarde si la valeur passer en paramètre est dans la ligne
 	private boolean checkIfIsInTheLine(int c, int value) {
  		for(int l = 0; l < 9; l++) {
  			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
@@ -63,13 +72,14 @@ public class resolver {
  		return false;
  	}
 	
+	// Nettoie une ligne
 	private void cleanLine(int l, int value) {
 		for(int c = 0; c < 9; c++) {
 			if(sudoBoard.getTab()[l][c].getValue() != 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
 		}
 	}
 	 	
-
+	// Regarde si la valeur passer en paramètre est dans une colonne
 	private boolean checkIfIsInTheColumn(int l, int value) {
  		for(int c = 0; c < 9; c++) {
  			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
@@ -77,13 +87,14 @@ public class resolver {
  		return false;
  	}
 	
+	// Nettoie une colonne
 	private void cleanColumn(int c, int value) {
 		for(int l = 0; l < 9; l++) {
 			if(sudoBoard.getTab()[l][c].getValue() != 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
 		}
 	}
 	
- 	
+	// Regarde si la valeur passer en paramètre est dans le gros carré 3x3
  	private boolean checkBigSquarre(int c, int l, int value) {
  		for(int col = 0; col < 3; col++) {
  			for(int row = 0; row < 3; row++) {
@@ -93,7 +104,7 @@ public class resolver {
  		return false;
  	}
  	
- 	
+ 	// Nettoie un gros carré de 3x3
  	private void cleanBigSquarre(int c, int l, int value) {
  		bigCase bc = getbigCaseBySimpleCase(l, c);
  		simpleCase[][] tmpCases = bc.getsimpleCases();
@@ -105,7 +116,7 @@ public class resolver {
  			}
  		}
  		
- 		// nettoyage des lines/collones du carr�
+ 		// Nettoyage des lines/collones du carré
  		for(int i = 0; i < 3; i++) {
  			for(int j = 0; j < 3; j++) {
  				bc.cleanColumn(c, value);
@@ -128,7 +139,7 @@ public class resolver {
 	
 	
 	
- 	
+ 	// Récupère les grosses cases 3x3 en fonction d'une petite case
  	private bigCase getbigCaseBySimpleCase(int l, int c) {
  		int bigSquarrePosL = (int) (Math.ceil(l/3) -1);
  		int bigSquarrePosC = (int) (Math.ceil(c/3) -1);
