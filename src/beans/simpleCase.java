@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class simpleCase {
 	
-	private int value;
+	private int value = 0;
 	private int posX;
 	private int posY;
 	

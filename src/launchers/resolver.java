@@ -35,16 +35,16 @@ public class resolver {
 			  for(int nb = 1; nb < 10; nb++) {
 				  
 				  for(int c = 0; c < 9; c++) {
-					  solver.cleanColumn(c, nb);
+					  if(solver.checkIfIsInTheColumn(c, nb)) solver.cleanColumn(c, nb);
 				  }
 				  
 				  for(int l = 0; l < 9; l++) {
-					  solver.cleanLine(l, nb);
+					  if(solver.checkIfIsInTheLine(l, nb)) solver.cleanLine(l, nb);
 				  }
 				  
 				  for(int c = 0; c < 3; c++) {
 					  for(int l = 0; l < 3; l++) {
-						  solver.cleanBigSquarre(c, l, nb);
+						  if(solver.checkBigSquarre(c, l, nb)) solver.cleanBigSquarre(c, l, nb);
 					  }
 				  }
 				  
@@ -65,7 +65,7 @@ public class resolver {
 	
 	private void cleanLine(int l, int value) {
 		for(int c = 0; c < 9; c++) {
-			sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
+			if(sudoBoard.getTab()[l][c].getValue() != 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
 		}
 	}
 	 	
@@ -79,8 +79,7 @@ public class resolver {
 	
 	private void cleanColumn(int c, int value) {
 		for(int l = 0; l < 9; l++) {
-			// Cast la value en Integer
-			sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
+			if(sudoBoard.getTab()[l][c].getValue() != 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
 		}
 	}
 	
@@ -102,7 +101,7 @@ public class resolver {
  		// nettoyage des cases
  		for(int col = 0; col < 3; col++) {
  			for(int row = 0; row < 3; row++) {
- 				tmpCases[l][c].getPotentials().remove((Integer) value);
+ 				if(tmpCases[l][c].getValue() != 0) tmpCases[l][c].getPotentials().remove((Integer) value);
  			}
  		}
  		
