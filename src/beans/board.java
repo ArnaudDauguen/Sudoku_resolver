@@ -35,6 +35,13 @@ public class board {
 		}
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 	// Getters && Setters
 	
 	public board(int[][] board) {
