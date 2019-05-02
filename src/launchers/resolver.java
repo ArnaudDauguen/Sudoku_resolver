@@ -28,7 +28,28 @@ public class resolver {
 	}
 
 	public static void main(String[] args) {
-		   
+		
+		  resolver solver = new resolver();
+		  
+		  while(true) {
+			  for(int nb = 1; nb < 10; nb++) {
+				  
+				  for(int c = 0; c < 9; c++) {
+					  solver.cleanColumn(c, nb);
+				  }
+				  
+				  for(int l = 0; l < 9; l++) {
+					  solver.cleanLine(l, nb);
+				  }
+				  
+				  for(int c = 0; c < 3; c++) {
+					  for(int l = 0; l < 3; l++) {
+						  solver.cleanBigSquarre(c, l, nb);
+					  }
+				  }
+				  
+			  }
+		  }
 	}
 	
 	
