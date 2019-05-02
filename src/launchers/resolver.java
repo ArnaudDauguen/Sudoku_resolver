@@ -28,16 +28,16 @@ public class resolver {
 	}
 
 	public static void main(String[] args) {
-		
+		   
 	}
 	
-	 
 	
+ 
 	// Methods
 	
 	private boolean checkIfIsInTheLine(int c, int value) {
  		for(int l = 0; l < 9; l++) {
- 			if(sudoBoard.getSudoBoard()[l][c] == value) return true;
+ 			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
  		}
  		return false;
  	}
@@ -45,22 +45,27 @@ public class resolver {
 
 	private boolean checkIfIsInTheColumn(int l, int value) {
  		for(int c = 0; c < 9; c++) {
- 			if(sudoBoard.getSudoBoard()[l][c] == value) return true;
+ 			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
  		}
  		return false;
  	}
+	
+	private void cleanColumn(int c, int value) {
+		for(int l = 0; l < 9; l++) {
+			// Cast la value en Integer
+			sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
+		}
+	}
 	
  	
  	private boolean checkBigSquarre(int c, int l, int value) {
  		for(int col = 0; col < 3; col++) {
  			for(int row = 0; row < 3; row++) {
- 				if(sudoBoard.getSudoBoard()[l][c] == value) return true;
+ 				if(sudoBoard.getTab()[l][c].getValue() == value) return true;
  			}
  		}
  		return false;
  	}
-	 
-	 
 	 
 
 }

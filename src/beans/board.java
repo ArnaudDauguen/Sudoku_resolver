@@ -19,8 +19,8 @@ public class board {
 	};
 	
 	private simpleCase[][] tab = new simpleCase[9][9];
-	// Constructor
 	
+	// Constructor
 	public board() {
 		
 	}

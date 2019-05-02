@@ -16,7 +16,7 @@ public class bigCase {
 	private ArrayList<Integer> potentialsValuesForLines3 = new ArrayList<Integer>();
 	
 	
-	//constructor
+	// Constructeur
 	public bigCase(ArrayList<simpleCase> casesList) {
 		for(int i = 1; i <= 9; i++) {
 			potentialsValuesForColumns1.add(i);
@@ -27,7 +27,7 @@ public class bigCase {
 			potentialsValuesForLines3.add(i);
 		}
 		
-		// mise en place des petits carrés
+		// Mise en place des simpleCases
 		for(int x = 0; x < 3; x++) {
 			for(int y = 0; y < 3; y++) {
 				cases[x][y] = casesList.get(x + y);
@@ -36,8 +36,7 @@ public class bigCase {
 		
 	}
 	
-	
-	
+	// Methods
 	
 	public ArrayList<Integer> getLine(int x) {
 		ArrayList<Integer> listL = new ArrayList<Integer>();
