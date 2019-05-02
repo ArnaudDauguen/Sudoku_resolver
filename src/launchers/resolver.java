@@ -73,6 +73,7 @@ public class resolver {
  		return false;
  	}
  	
+ 	
  	private void cleanBigSquarre(int c, int l, int value) {
  		bigCase bc = getbigCaseBySimpleCase(l, c);
  		simpleCase[][] tmpCases = bc.getsimpleCases();
@@ -84,7 +85,7 @@ public class resolver {
  			}
  		}
  		
- 		// nettoyage des lines/collones du carré
+ 		// nettoyage des lines/collones du carrï¿½
  		for(int i = 0; i < 3; i++) {
  			for(int j = 0; j < 3; j++) {
  				bc.cleanColumn(c, value);
@@ -92,15 +93,21 @@ public class resolver {
  			}
  		}
  	}
- 		
- 		
  	
- 	
- 	
- 	
- 	
- 	
- 	
+ 				
+	private boolean possibleValues(int c, int l, int value) {
+ 		return !this.checkIfIsInTheLine(c, value) 
+ 			&& !this.checkIfIsInTheColumn(l, value) 
+ 			&& !this.checkBigSquarre(c, l, value);
+ 	}
+	
+	
+	
+	
+	
+	
+	
+	
  	
  	private bigCase getbigCaseBySimpleCase(int l, int c) {
  		int bigSquarrePosL = (int) (Math.ceil(l/3) -1);
