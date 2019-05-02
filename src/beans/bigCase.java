@@ -8,7 +8,7 @@ public class bigCase {
 	
 	private simpleCase[][] cases = new simpleCase[3][3];
 	
-	private int[][][] potentilasValues = new int[3][3][9];
+	private int[][][] potentialsValues = new int[3][3][9];
 	
 	
 	//constructor
@@ -16,7 +16,7 @@ public class bigCase {
 		for(int l = 0; l < 3; l++) {
 			for(int c = 0; c < 3; c++) {
 				for(int nb = 1; nb <= 9; nb++) {
-					potentilasValues[l][c][nb-1] = nb; 
+					potentialsValues[l][c][nb-1] = nb; 
 				}
 			}
 		}
@@ -56,13 +56,13 @@ public class bigCase {
 	
 	public void cleanLine(int l, int value) {
 		for(int c = 0; c < 3; c++) {
-			potentilasValues[l][c][value -1] = 0; 
+			potentialsValues[l][c][value -1] = 0; 
 		}
 	}
 	
 	public void cleanColumn(int c, int value) {
 		for(int l = 0; l < 3; l++) {
-			potentilasValues[l][c][value -1] = 0; 
+			potentialsValues[l][c][value -1] = 0; 
 		}
 	}
 	

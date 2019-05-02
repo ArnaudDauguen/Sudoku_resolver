@@ -74,25 +74,39 @@ public class resolver {
  	}
  	
  	private void cleanBigSquarre(int c, int l, int value) {
+ 		bigCase bc = getbigCaseBySimpleCase(l, c);
+ 		simpleCase[][] tmpCases = bc.getsimpleCases();
  		
- 		int bigSquarrePosL = (int) (Math.ceil(l/3) -1);
- 		int bigSquarrePosC = (int) (Math.ceil(c/3) -1);
- 		
- 		
- 		simpleCase[][] tmpCases = bigCases[bigSquarrePosL][bigSquarrePosC].getsimpleCases();
- 		
- 		
+ 		// nettoyage des cases
  		for(int col = 0; col < 3; col++) {
  			for(int row = 0; row < 3; row++) {
- 				if(tmpCases[l][c].getValue() == value) {
- 					
- 				}
+ 				tmpCases[l][c].getPotentials().remove((Integer) value);
+ 			}
+ 		}
+ 		
+ 		// nettoyage des lines/collones du carré
+ 		for(int i = 0; i < 3; i++) {
+ 			for(int j = 0; j < 3; j++) {
+ 				bc.cleanColumn(c, value);
+ 				bc.cleanLine(l, value);
  			}
  		}
  	}
  		
  		
  	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	private bigCase getbigCaseBySimpleCase(int l, int c) {
+ 		int bigSquarrePosL = (int) (Math.ceil(l/3) -1);
+ 		int bigSquarrePosC = (int) (Math.ceil(c/3) -1);
+ 		return bigCases[bigSquarrePosL][bigSquarrePosC];
+ 	}
 	 
 
 }
