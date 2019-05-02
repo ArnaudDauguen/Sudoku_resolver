@@ -50,11 +50,16 @@ public class resolver {
 						  if(solver.checkBigSquarre(c, l, nb)) solver.cleanBigSquarre(c, l, nb);
 					  }
 				  } 
-				  // Parcours toutes les cases
-				  for(int c = 0; c < 9; c++) {
-					  for(int l = 0; l < 9; l++) {
-						 
-					  }
+			  }
+			// Parcours toutes les cases
+			  for(int c = 0; c < 9; c++) {
+				  for(int l = 0; l < 9; l++) {
+					  
+					 simpleCase sc = solver.getBoard().getTab()[l][c];
+					 
+					 if(sc.getValue() != 0) {
+						 if(sc.getPotentials().size() == 1) sc.setValue(sc.getPotentials().get(0));
+					 }
 				  }
 			  }
 		  }
@@ -146,5 +151,11 @@ public class resolver {
  		return bigCases[bigSquarrePosL][bigSquarrePosC];
  	}
 	 
+ 	
+ 	// Getters && Setters
+ 	
+ 	public board getBoard() {
+ 		return sudoBoard;
+ 	}
 
 }
