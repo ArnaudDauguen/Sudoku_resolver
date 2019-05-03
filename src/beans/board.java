@@ -20,22 +20,13 @@ public class board {
 	
 	// Constructor
 	public board() {
-		
-	}
-	
-	// Methods
-	
-	private void createSimpleCaseGreed() {
 		for(int x = 0; x < 9; x++) {
 			for(int y = 0; y < 9; y++) {
 				tab[x][y] = new simpleCase(sudoBoard[x][y], x, y);
 			}
 		}
 	}
-	
-	
-	
-	
+
 	
 	
 	

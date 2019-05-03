@@ -13,6 +13,7 @@ public class resolver {
 	
 	// Constructeur
 	public resolver() {
+		sudoBoard = new board();
 		for(int x = 0; x < 3; x++) {
 			for(int y = 0; y < 3; y++) {
 				ArrayList<simpleCase> casesList = new ArrayList<simpleCase>();
@@ -49,7 +50,7 @@ public class resolver {
 					  for(int l = 0; l < 3; l++) {
 						  if(solver.checkBigSquarre(c, l, nb)) solver.cleanBigSquarre(c, l, nb);
 					  }
-				  } 
+				  }
 			  }
 			  // Parcours toutes les cases et les remplis 
 			  for(int c = 0; c < 9; c++) {
@@ -62,7 +63,16 @@ public class resolver {
 					 }
 				  }
 			  }
+			  // Affichage de la grille (temporaire)
+			  for(int l = 0; l < 9; l++) {
+				  for(int c = 0; c < 9; c++) {
+					  System.out.print(solver.getBoard().getTab()[l][c].getValue() + " ");
+				  }
+				  System.out.println();
+			  }
+			  System.out.println();
 		  }
+	
 	}
 	
 	
@@ -146,8 +156,8 @@ public class resolver {
 	
  	// Récupère les grosses cases 3x3 en fonction d'une petite case
  	private bigCase getbigCaseBySimpleCase(int l, int c) {
- 		int bigSquarrePosL = (int) (Math.ceil(l/3) -1);
- 		int bigSquarrePosC = (int) (Math.ceil(c/3) -1);
+ 		int bigSquarrePosL = (int) (Math.ceil(l/3));
+ 		int bigSquarrePosC = (int) (Math.ceil(c/3));
  		return bigCases[bigSquarrePosL][bigSquarrePosC];
  	}
 	 
