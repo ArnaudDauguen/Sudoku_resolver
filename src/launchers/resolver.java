@@ -51,7 +51,7 @@ public class resolver {
 					  }
 				  } 
 			  }
-			// Parcours toutes les cases
+			  // Parcours toutes les cases et les remplis 
 			  for(int c = 0; c < 9; c++) {
 				  for(int l = 0; l < 9; l++) {
 					  
@@ -121,7 +121,7 @@ public class resolver {
  			}
  		}
  		
- 		// Nettoyage des lines/collones du carré
+ 		// Nettoyage des lines/colonnes du carré
  		for(int i = 0; i < 3; i++) {
  			for(int j = 0; j < 3; j++) {
  				bc.cleanColumn(c, value);

@@ -1,7 +1,5 @@
 package beans;
 
-import java.util.ArrayList;
-
 public class board {
 	
 	private int[][] sudoBoard = {

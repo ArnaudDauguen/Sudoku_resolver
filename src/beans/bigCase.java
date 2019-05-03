@@ -22,7 +22,7 @@ public class bigCase {
 			}
 		}
 		
-		// Mise en place des petits carrés
+		// Mise en place des petits carrÃ©s
 		for(int x = 0; x < 3; x++) {
 			for(int y = 0; y < 3; y++) {
 				cases[x][y] = casesList.get(x + y);
