@@ -11,12 +11,13 @@ public class Resolver {
 	private Board sudoBoard;
 	private BigCase[] bigCases = new BigCase[9];
 	
-	// Constructor
+	// Constructeur
 	public Resolver() {
 		sudoBoard = new Board();
 		
 		//TODO la boucle de l'infini
-		
+			// blogalCleaning
+			// grosCarres.fillValues
 	}
 
 	
@@ -29,7 +30,7 @@ public class Resolver {
 	private void globalCleaning() {
 		for(int number = 1; number <= 9; number++) {
 			for(BigCase bc : bigCases) {
-				//TODO
+				bc.clean(number);
 			}
 			for(int i = 0; i < 9; i++) {
 				if(checkIfIsInTheColumn(i, number)) cleanColumn(i, number);
@@ -72,7 +73,7 @@ public class Resolver {
 	
 	
 	//TODO check
-	// Remplissage des valeurs (par elimination dans un gros carre)
+	// remplissage des valuers (par elimination dans un gros carre)
 	private void fillValues(int grosCarreNumber) {
 		for (int number = 1; number < 10; number ++) {
 			ArrayList<SimpleCase> availables = new ArrayList<SimpleCase>();
@@ -90,7 +91,20 @@ public class Resolver {
 		}
 	}
 	
-	// Main program
+	
+	
+ 	
+ 	// Getters && Setters
+ 	
+ 	public Board getBoard() {
+ 		return sudoBoard;
+ 	}
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  	public static void main (String args[]) {
  		new Resolver();
  	}
