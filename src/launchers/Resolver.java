@@ -11,7 +11,7 @@ public class Resolver {
 	private Board sudoBoard;
 	private BigCase[] bigCases = new BigCase[9];
 	
-	// Constructeur
+	// Constructor
 	public Resolver() {
 		sudoBoard = new Board();
 		
@@ -72,7 +72,7 @@ public class Resolver {
 	
 	
 	//TODO check
-	// remplissage des valuers (par elimination dans un gros carre)
+	// Remplissage des valeurs (par elimination dans un gros carre)
 	private void fillValues(int grosCarreNumber) {
 		for (int number = 1; number < 10; number ++) {
 			ArrayList<SimpleCase> availables = new ArrayList<SimpleCase>();
@@ -90,20 +90,7 @@ public class Resolver {
 		}
 	}
 	
-	
-	
- 	
- 	// Getters && Setters
- 	
- 	public Board getBoard() {
- 		return sudoBoard;
- 	}
- 	
- 	
- 	
- 	
- 	
- 	
+	// Main program
  	public static void main (String args[]) {
  		new Resolver();
  	}

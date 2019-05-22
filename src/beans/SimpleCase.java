@@ -15,7 +15,7 @@ public class SimpleCase {
 		this.posX = posX;
 		this.posY = posY;
 
-		// ajout de tout les nombres potentiels si la case n'a pas deja de valeur
+		// Ajout de tous les nombres potentiels si la case n'a pas deja de valeur
 		if(this.value != 0) {
 			for(int i = 1; i <= 9; i++) {
 				potentials.add(i);

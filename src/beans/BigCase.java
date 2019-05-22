@@ -1,7 +1,6 @@
 package beans;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BigCase {
 
@@ -18,7 +17,7 @@ public class BigCase {
 	
 	
 	
-	// Methodes
+	// Methods
 	
 	public boolean checkForValue(int value) {
 		for(SimpleCase c : cases) {
