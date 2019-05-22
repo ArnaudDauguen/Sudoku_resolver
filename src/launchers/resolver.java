@@ -2,6 +2,8 @@ package launchers;
 
 import java.util.ArrayList;
 
+import com.sun.org.apache.xml.internal.resolver.Resolver;
+
 import beans.bigCase;
 import beans.board;
 import beans.simpleCase;
@@ -9,79 +11,38 @@ import beans.simpleCase;
 public class resolver {	
 
 	private board sudoBoard;
-	private bigCase[][] bigCases = new bigCase[3][3];
+	private bigCase[] bigCases = new bigCase[9];
 	
 	// Constructeur
 	public resolver() {
 		sudoBoard = new board();
-		for(int x = 0; x < 3; x++) {
-			for(int y = 0; y < 3; y++) {
-				ArrayList<simpleCase> casesList = new ArrayList<simpleCase>();
-				
-				for(int row = x*3; row < x*3+3; row++) {
-					for(int col = x*3; col < x*3+3; col ++) {
-						casesList.add(sudoBoard.getTab()[row][col]);
-					}
-				}
-				bigCases[x][y] = new bigCase(casesList);
-			}
-		}
+		
+		//TODO la boucle de l'infini
 		
 	}
 
-	public static void main(String[] args) {
-		
-		  resolver solver = new resolver();
-		  
-		  while(true) {
-			  // Pour les nombres entre 1 et 9 inclus
-			  for(int nb = 1; nb < 10; nb++) {
-				  
-				  // Nettoyage colonne
-				  for(int c = 0; c < 9; c++) {
-					  if(solver.checkIfIsInTheColumn(c, nb)) solver.cleanColumn(c, nb);
-				  }
-				  // Nettoyage ligne
-				  for(int l = 0; l < 9; l++) {
-					  if(solver.checkIfIsInTheLine(l, nb)) solver.cleanLine(l, nb);
-				  }
-				  // Nettoyage gros carré
-				  for(int c = 0; c < 3; c++) {
-					  for(int l = 0; l < 3; l++) {
-						  if(solver.checkBigSquarre(c, l, nb)) solver.cleanBigSquarre(c, l, nb);
-					  }
-				  }
-			  }
-			  // Parcours toutes les cases et les remplis 
-			  for(int c = 0; c < 9; c++) {
-				  for(int l = 0; l < 9; l++) {
-					  
-					 simpleCase sc = solver.getBoard().getTab()[l][c];
-					 
-					 if(sc.getValue() != 0) {
-						 if(sc.getPotentials().size() == 1) sc.setValue(sc.getPotentials().get(0));
-					 }
-				  }
-			  }
-			  // Affichage de la grille (temporaire)
-			  for(int l = 0; l < 9; l++) {
-				  for(int c = 0; c < 9; c++) {
-					  System.out.print(solver.getBoard().getTab()[l][c].getValue() + " ");
-				  }
-				  System.out.println();
-			  }
-			  System.out.println();
-		  }
 	
-	}
-	
+
 	
  
 	// Methods
 	
-	// Regarde si la valeur passer en paramètre est dans la ligne
-	private boolean checkIfIsInTheLine(int c, int value) {
- 		for(int l = 0; l < 9; l++) {
+	//TODO WIP
+	private void globalCleaning() {
+		for(int number = 1; number <= 9; number++) {
+			for(bigCase bc : bigCases) {
+				//TODO
+			}
+			for(int i = 0; i < 9; i++) {
+				if(checkIfIsInTheColumn(i, number)) cleanColumn(i, number);
+				if(checkIfIsInTheLine(i, number)) cleanLine(i, number);
+			}
+		}
+	}
+	
+	// Regarde si la valeur passer en parametre est dans la ligne
+	private boolean checkIfIsInTheLine(int l, int value) {
+ 		for(int c = 0; c < 9; c++) {
  			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
  		}
  		return false;
@@ -90,13 +51,13 @@ public class resolver {
 	// Nettoie une ligne
 	private void cleanLine(int l, int value) {
 		for(int c = 0; c < 9; c++) {
-			if(sudoBoard.getTab()[l][c].getValue() != 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
+			if(sudoBoard.getTab()[l][c].getValue() == 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
 		}
 	}
 	 	
-	// Regarde si la valeur passer en paramètre est dans une colonne
-	private boolean checkIfIsInTheColumn(int l, int value) {
- 		for(int c = 0; c < 9; c++) {
+	// Regarde si la valeur passer en parametre est dans une colonne
+	private boolean checkIfIsInTheColumn(int c, int value) {
+ 		for(int l = 0; l < 9; l++) {
  			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
  		}
  		return false;
@@ -105,67 +66,48 @@ public class resolver {
 	// Nettoie une colonne
 	private void cleanColumn(int c, int value) {
 		for(int l = 0; l < 9; l++) {
-			if(sudoBoard.getTab()[l][c].getValue() != 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
+			if(sudoBoard.getTab()[l][c].getValue() == 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
 		}
 	}
 	
-	// Regarde si la valeur passer en paramètre est dans le gros carré 3x3
- 	private boolean checkBigSquarre(int c, int l, int value) {
- 		for(int col = 0; col < 3; col++) {
- 			for(int row = 0; row < 3; row++) {
- 				if(sudoBoard.getTab()[l][c].getValue() == value) return true;
- 			}
- 		}
- 		return false;
- 	}
- 	
- 	// Nettoie un gros carré de 3x3
- 	private void cleanBigSquarre(int c, int l, int value) {
- 		bigCase bc = getbigCaseBySimpleCase(l, c);
- 		simpleCase[][] tmpCases = bc.getsimpleCases();
- 		
- 		// nettoyage des cases
- 		for(int col = 0; col < 3; col++) {
- 			for(int row = 0; row < 3; row++) {
- 				if(tmpCases[l][c].getValue() != 0) tmpCases[l][c].getPotentials().remove((Integer) value);
- 			}
- 		}
- 		
- 		// Nettoyage des lines/colonnes du carré
- 		for(int i = 0; i < 3; i++) {
- 			for(int j = 0; j < 3; j++) {
- 				bc.cleanColumn(c, value);
- 				bc.cleanLine(l, value);
- 			}
- 		}
- 	}
- 	
- 				
-	private boolean possibleValues(int c, int l, int value) {
- 		return !this.checkIfIsInTheLine(c, value) 
- 			&& !this.checkIfIsInTheColumn(l, value) 
- 			&& !this.checkBigSquarre(c, l, value);
- 	}
 	
 	
 	
+	//TODO check
+	// remplissage des valuers (par elimination dans un gros carre)
+	private void fillValues(int grosCarreNumber) {
+		for (int number = 1; number < 10; number ++) {
+			ArrayList<simpleCase> availables = new ArrayList<simpleCase>();
+			//recup de tt les cases
+			for(simpleCase c : bigCases[grosCarreNumber].getSimpleCases()) {
+				if(c.getValue() != 0 && c.getPotentials().contains((Integer) number)) {
+					availables.add(c);	
+				}
+			}
+			System.out.println(availables.size());
+			if(availables.size() == 1) {
+				availables.get(0).setValue(number);
+				availables.clear();
+			}
+		}
+	}
 	
 	
 	
-	
-	
- 	// Récupère les grosses cases 3x3 en fonction d'une petite case
- 	private bigCase getbigCaseBySimpleCase(int l, int c) {
- 		int bigSquarrePosL = (int) (Math.ceil(l/3));
- 		int bigSquarrePosC = (int) (Math.ceil(c/3));
- 		return bigCases[bigSquarrePosL][bigSquarrePosC];
- 	}
-	 
  	
  	// Getters && Setters
  	
  	public board getBoard() {
  		return sudoBoard;
+ 	}
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	public static void main (String args[]) {
+ 		new Resolver();
  	}
 
 }
