@@ -2,7 +2,7 @@ package beans;
 
 import java.util.ArrayList;
 
-public class simpleCase {
+public class SimpleCase {
 	
 	private int value = 0;
 	private int posX;
@@ -10,7 +10,7 @@ public class simpleCase {
 	
 	private ArrayList<Integer> potentials = new ArrayList<Integer>();
 	
-	public simpleCase(int value, int posX, int posY) {
+	public SimpleCase(int value, int posX, int posY) {
 		this.value = value;
 		this.posX = posX;
 		this.posY = posY;

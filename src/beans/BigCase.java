@@ -3,12 +3,12 @@ package beans;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class bigCase {
+public class BigCase {
 
-	private simpleCase[] cases = new simpleCase[9];
+	private SimpleCase[] cases = new SimpleCase[9];
 	
 	// Constructor
-	public bigCase(ArrayList<simpleCase> casesList) {
+	public BigCase(ArrayList<SimpleCase> casesList) {
 		// Mise en place des petits carres
 		for(int x = 0; x < 9; x++) {
 			cases[x] = casesList.get(x);
@@ -21,7 +21,7 @@ public class bigCase {
 	// Methodes
 	
 	public boolean checkForValue(int value) {
-		for(simpleCase c : cases) {
+		for(SimpleCase c : cases) {
 			if(c.getValue() == value) return true;
 		}
 		return false;
@@ -32,7 +32,7 @@ public class bigCase {
 
 	// Getters && Setters
 	
-	public simpleCase[] getSimpleCases(){
+	public SimpleCase[] getSimpleCases(){
 		return cases;
 	}
 	

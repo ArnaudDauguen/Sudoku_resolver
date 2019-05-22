@@ -2,20 +2,18 @@ package launchers;
 
 import java.util.ArrayList;
 
-import com.sun.org.apache.xml.internal.resolver.Resolver;
+import beans.BigCase;
+import beans.Board;
+import beans.SimpleCase;
 
-import beans.bigCase;
-import beans.board;
-import beans.simpleCase;
+public class Resolver {	
 
-public class resolver {	
-
-	private board sudoBoard;
-	private bigCase[] bigCases = new bigCase[9];
+	private Board sudoBoard;
+	private BigCase[] bigCases = new BigCase[9];
 	
 	// Constructeur
-	public resolver() {
-		sudoBoard = new board();
+	public Resolver() {
+		sudoBoard = new Board();
 		
 		//TODO la boucle de l'infini
 		
@@ -30,7 +28,7 @@ public class resolver {
 	//TODO WIP
 	private void globalCleaning() {
 		for(int number = 1; number <= 9; number++) {
-			for(bigCase bc : bigCases) {
+			for(BigCase bc : bigCases) {
 				//TODO
 			}
 			for(int i = 0; i < 9; i++) {
@@ -77,9 +75,9 @@ public class resolver {
 	// remplissage des valuers (par elimination dans un gros carre)
 	private void fillValues(int grosCarreNumber) {
 		for (int number = 1; number < 10; number ++) {
-			ArrayList<simpleCase> availables = new ArrayList<simpleCase>();
+			ArrayList<SimpleCase> availables = new ArrayList<SimpleCase>();
 			//recup de tt les cases
-			for(simpleCase c : bigCases[grosCarreNumber].getSimpleCases()) {
+			for(SimpleCase c : bigCases[grosCarreNumber].getSimpleCases()) {
 				if(c.getValue() != 0 && c.getPotentials().contains((Integer) number)) {
 					availables.add(c);	
 				}
@@ -97,7 +95,7 @@ public class resolver {
  	
  	// Getters && Setters
  	
- 	public board getBoard() {
+ 	public Board getBoard() {
  		return sudoBoard;
  	}
  	

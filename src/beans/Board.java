@@ -1,6 +1,6 @@
  package beans;
 
-public class board {
+public class Board {
 	
 	private int[][] sudoBoard = {
 		{0,0,0,0,3,0,0,6,2},
@@ -16,13 +16,13 @@ public class board {
 	    {7,3,0,0,6,0,0,0,0}
 	};
 	
-	private simpleCase[][] tab = new simpleCase[9][9];
+	private SimpleCase[][] tab = new SimpleCase[9][9];
 	
 	// Constructor
-	public board() {
+	public Board() {
 		for(int x = 0; x < 9; x++) {
 			for(int y = 0; y < 9; y++) {
-				tab[x][y] = new simpleCase(sudoBoard[x][y], x, y);
+				tab[x][y] = new SimpleCase(sudoBoard[x][y], x, y);
 			}
 		}
 	}
@@ -33,7 +33,7 @@ public class board {
 	
 	// Getters && Setters
 	
-	public board(int[][] board) {
+	public Board(int[][] board) {
 		this.sudoBoard = board;
 	}
 
@@ -45,11 +45,11 @@ public class board {
 		this.sudoBoard = sudoBoard;
 	}
 	
-	public simpleCase[][] getTab() {
+	public SimpleCase[][] getTab() {
 		return tab;
 	}
 
-	public void setTab(simpleCase[][] tab) {
+	public void setTab(SimpleCase[][] tab) {
 		this.tab = tab;
 	}
 	
