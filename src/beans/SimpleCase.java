@@ -26,7 +26,9 @@ public class SimpleCase {
 	// Methods
 	
 	public void removePotential(int number) {
-		
+		for(int value : potentials) {
+			potentials.remove(number);
+		}
 	}
 	
 	
