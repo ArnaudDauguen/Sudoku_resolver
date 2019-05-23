@@ -17,6 +17,21 @@ public class Resolver {
 	public Resolver() {
 		sudoBoard = new Board();
 		
+		// Remplissage des lignes colonnes carres 
+		for(int l = 0; l < 9; l++) {
+			for(int c = 0; c < 9; c++) {
+				SimpleCase sCase = sudoBoard.getTab()[l][c];
+				
+				// For bigSquarre
+				int posX = l / 3;
+				int posY = c / 3;
+				
+				bigCases[posX * 3 + posY].addCase(sCase);
+				lignes[l].addCase(sCase);
+				colonnes[c].addCase(sCase);
+			}
+		}
+		
 		//TODO la boucle de l'infini
 			// blogalCleaning
 			// grosCarres.fillValues
