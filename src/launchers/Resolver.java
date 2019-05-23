@@ -72,24 +72,7 @@ public class Resolver {
 	
 	
 	
-	//TODO check
-	// remplissage des valuers (par elimination dans un gros carre)
-	private void fillValues(int grosCarreNumber) {
-		for (int number = 1; number < 10; number ++) {
-			ArrayList<SimpleCase> availables = new ArrayList<SimpleCase>();
-			//recup de tt les cases
-			for(SimpleCase c : bigCases[grosCarreNumber].getSimpleCases()) {
-				if(c.getValue() != 0 && c.getPotentials().contains((Integer) number)) {
-					availables.add(c);	
-				}
-			}
-			System.out.println(availables.size());
-			if(availables.size() == 1) {
-				availables.get(0).setValue(number);
-				availables.clear();
-			}
-		}
-	}
+	
 	
 	
 	
