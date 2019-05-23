@@ -23,6 +23,12 @@ public class SimpleCase {
 		}
 	}
 	
+	// Methods
+	
+	public void removePotential(int number) {
+		
+	}
+	
 	
 	
 	// Getters && Setters

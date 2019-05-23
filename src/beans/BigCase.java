@@ -1,7 +1,6 @@
 package beans;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BigCase {
 
@@ -19,7 +18,7 @@ public class BigCase {
 	
 	
 	
-	// Methodes
+	// Methods
 	
 	public boolean checkForValue(int value) {
 		for(SimpleCase c : cases) {
@@ -31,9 +30,11 @@ public class BigCase {
 	//TODO nettoyage
 	public void clean(int number) {
 		for(SimpleCase c : cases) {
-			if(c.getValue() != 0) if(c.getPotentials().contains((Integer)(number))) c.removePotential(number);
+			if(c.getValue() != 0) 
+				if(c.getPotentials().contains((Integer)(number))) c.removePotential(number);
 		}
 	}
+	
 
 	// Getters && Setters
 	
