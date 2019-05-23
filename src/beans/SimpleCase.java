@@ -26,13 +26,10 @@ public class SimpleCase {
 	// Methods
 	
 	public void removePotential(int number) {
-		for(int value : potentials) {
-			potentials.remove(number);
-		}
+		potentials.remove((Integer) number);
 	}
-	
-	
-	
+		
+		
 	// Getters && Setters
 	
 	public void setValue(int value) {
@@ -42,7 +39,7 @@ public class SimpleCase {
 	public int getValue() {
 		return value;
 	}
-
+	
 	public int getPosX() {
 		return posX;
 	}
