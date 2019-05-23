@@ -2,14 +2,16 @@ package launchers;
 
 import java.util.ArrayList;
 
-import beans.BigCase;
+import beans.GroupedCases;
 import beans.Board;
 import beans.SimpleCase;
 
 public class Resolver {	
 
 	private Board sudoBoard;
-	private BigCase[] bigCases = new BigCase[9];
+	private GroupedCases[] bigCases = new GroupedCases[9];
+	private GroupedCases[] colonnes = new GroupedCases[9];
+	private GroupedCases[] lignes = new GroupedCases[9];
 	
 	// Constructeur
 	public Resolver() {
@@ -29,7 +31,7 @@ public class Resolver {
 	//TODO WIP
 	private void globalCleaning() {
 		for(int number = 1; number <= 9; number++) {
-			for(BigCase bc : bigCases) {
+			for(GroupedCases bc : bigCases) {
 				bc.clean(number);
 			}
 			for(int i = 0; i < 9; i++) {
