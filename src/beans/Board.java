@@ -18,7 +18,7 @@ public class Board {
 	
 	private SimpleCase[][] tab = new SimpleCase[9][9];
 	
-	// Constructor
+	// Constructeur
 	public Board() {
 		for(int x = 0; x < 9; x++) {
 			for(int y = 0; y < 9; y++) {

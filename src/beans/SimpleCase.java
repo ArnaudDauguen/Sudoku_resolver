@@ -23,12 +23,14 @@ public class SimpleCase {
 		}
 	}
 	
-	// Methods
+	// Methodes
 	
+	// Supprime une valuer potentiel
 	public void removePotential(int number) {
 		potentials.remove((Integer) number);
 	}
 	
+	// Vide l'ArrayList de valeurs potentiels
 	public void clearPotentials() {
 		potentials.clear();
 		
@@ -36,8 +38,8 @@ public class SimpleCase {
 	
 	
 	
-		
-		
+	
+	
 	// Getters && Setters
 	
 	public void setValue(int value) {

@@ -11,15 +11,11 @@ public class Resolver {
 	private GroupedCases[] colonnes = new GroupedCases[9];
 	private GroupedCases[] lignes = new GroupedCases[9];
 	
-	
-	
 	// Constructeur
 	public Resolver() {
 		sudoBoard = new Board();
 		
-		
-		
-		// initialisation des cases
+		// Initialisation des cases
 		
 		for(int i = 0; i < 9; i++) {
 			bigCases[i] = new GroupedCases();
@@ -28,12 +24,12 @@ public class Resolver {
 		}
 		
 		
-		// Remplissage des lignes colonnes carres 
+		// Remplissage des lignes / colonnes / carres 
 		for(int l = 0; l < 9; l++) {
 			for(int c = 0; c < 9; c++) {
 				SimpleCase sCase = sudoBoard.getTab()[l][c];
 				
-				// For bigSquarre
+				// Pour le gros carré
 				int posX = l / 3;
 				int posY = c / 3;
 				
@@ -44,8 +40,7 @@ public class Resolver {
 		}
 		
 		
-		// boucle principale
-		//TODO trouver une methode pour terminer
+		// Boucle principale
 		while(!complete()) {
 			globalCleaning();
 			globalFilling();
@@ -57,16 +52,16 @@ public class Resolver {
 		}
 		
 		
-		System.out.println("Sudoku r�solu !");
+		System.out.println("Sudoku resolu !");
 	}
 
 	
 
 	
- 
-	// Methods
+
+	// Methodes
 	
-	// nettoyage global
+	// Nettoyage global
 	private void globalCleaning() {
 		for(int n = 1; n <= 9; n++) {
 			
@@ -83,15 +78,15 @@ public class Resolver {
 	}
 
 	
-	// remplissage global
+	// Remplissage global
 	private void globalFilling() {
 		for(int id = 0; id < 9; id++) {
-			// il faut juste parcours toutes les cases UNE fois pour les remplir (mais pour nettoyer faut faire les lignes, colonnes et carres)
+			// Il faut juste parcourir toutes les cases UNE fois pour les remplir (mais pour nettoyer il faut faire les lignes, les colonnes et les carres)
 			lignes[id].fillValues();
 		}
 	}
 	
-	
+	// Affichage de la grille du sudoku
 	public void render() {
 		for(GroupedCases l : lignes) {
 			for(SimpleCase c : l.getSimpleCases()) {
@@ -102,7 +97,7 @@ public class Resolver {
 		System.out.println();
 	}
 	
-	
+	// Vérifie que toutes les cases soit remplis 
 	public boolean complete() {
 		for(GroupedCases l : lignes) {
 			for(SimpleCase c : l.getSimpleCases()) {
@@ -112,22 +107,19 @@ public class Resolver {
 		return true;
 	}
 	
-	
-	
+
+ 	// Main
  	
- 	// Getters && Setters
+ 	public static void main (String args[]) {
+ 		new Resolver();
+ 	}
+ 	
+ 	// Getter
  	
  	public Board getBoard() {
  		return sudoBoard;
  	}
  	
  	
-
-
- 	
- 	
- 	public static void main (String args[]) {
- 		new Resolver();
- 	}
 
 }

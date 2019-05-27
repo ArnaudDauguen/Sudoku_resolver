@@ -13,6 +13,12 @@ public class GroupedCases {
 	
 	// Methodes
 	
+	// Permet d'ajouter une case
+	public void addCase(SimpleCase c) {
+		cases.add(c);
+	}
+	
+	// Check si il y a une valeur sur une case
 	public boolean checkForValue(int value) {
 		for(SimpleCase c : cases) {
 			if(c.getValue() == value) return true;
@@ -20,7 +26,7 @@ public class GroupedCases {
 		return false;
 	}
 	
-	// nettoyage
+	// Nettoyage
 	public void clean(int number) {
 		for(SimpleCase c : cases) {
 			if(c.getValue() == 0) if(c.getPotentials().contains((Integer)(number))) c.removePotential((Integer) number);
@@ -28,11 +34,11 @@ public class GroupedCases {
 	}
 	
 	
-	// remplissage des valuers (par elimination)
+	// Remplissage des valeurs (par elimination)
 	public void fillValues() {
 		for (int number = 1; number <= 9; number ++) {
 			ArrayList<SimpleCase> availables = new ArrayList<SimpleCase>();
-			//recup de tt les cases
+			// Récuperation de toutes les cases
 			for(SimpleCase c : cases) {
 				if(c.getValue() == 0 && c.getPotentials().contains((Integer) number)) {
 					availables.add(c);	
@@ -46,18 +52,11 @@ public class GroupedCases {
 		}
 	}
 
-	// Getters && Setters
+	// Getter 
 	
 	public ArrayList<SimpleCase> getSimpleCases(){
 		return cases;
-	}
-	
-	public void addCase(SimpleCase c) {
-		cases.add(c);
-	}
-	
-	
-	
-	
+	}	
+
 	
 }
