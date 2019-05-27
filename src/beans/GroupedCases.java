@@ -10,7 +10,7 @@ public class GroupedCases {
 	// pour une colonne, imaginer 9x1
 	
 	// Constructor
-	public GroupedCases(ArrayList<SimpleCase> casesList) {
+	public GroupedCases() {
 		
 	}
 	
@@ -31,10 +31,18 @@ public class GroupedCases {
 			if(c.getValue() != 0) if(c.getPotentials().contains((Integer)(number))) c.removePotential(number);
 		}
 	}
+
+	public void cleanAll() {
+		for(int n = 1; n <= 9; n++) {
+			for(SimpleCase c : cases) {
+				if(c.getValue() != 0) if(c.getPotentials().contains((Integer)(n))) c.removePotential(n);
+			}
+		}
+	}
 	
 	
 	// remplissage des valuers (par elimination)
-	private void fillValues() {
+	public void fillValues() {
 		for (int number = 1; number <= 9; number ++) {
 			ArrayList<SimpleCase> availables = new ArrayList<SimpleCase>();
 			//recup de tt les cases

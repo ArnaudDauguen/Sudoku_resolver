@@ -17,6 +17,17 @@ public class Resolver {
 	public Resolver() {
 		sudoBoard = new Board();
 		
+		
+		
+		// initialisation des cases
+		
+		for(int i = 0; i < 9; i++) {
+			bigCases[i] = new GroupedCases();
+			colonnes[i] = new GroupedCases();
+			lignes[i] = new GroupedCases();
+		}
+		
+		
 		// Remplissage des lignes colonnes carres 
 		for(int l = 0; l < 9; l++) {
 			for(int c = 0; c < 9; c++) {
@@ -32,9 +43,13 @@ public class Resolver {
 			}
 		}
 		
-		//TODO la boucle de l'infini
-			// blogalCleaning
-			// grosCarres.fillValues
+		
+		
+		for(int i = 0; i < 20; i++) {
+			globalCleaning();
+			globalFilling();
+			render();
+		}
 	}
 
 	
@@ -43,48 +58,70 @@ public class Resolver {
  
 	// Methods
 	
-	//TODO WIP
+	// nettoyage global
 	private void globalCleaning() {
-		for(int number = 1; number <= 9; number++) {
-			for(GroupedCases bc : bigCases) {
-				bc.clean(number);
+		for(int id = 0; id < 9; id++) {
+			bigCases[id].cleanAll();
+			colonnes[id].cleanAll();
+			lignes[id].cleanAll();
+		}
+	}
+
+	
+	// remplissage global
+	private void globalFilling() {
+		for(int id = 0; id < 9; id++) {
+			bigCases[id].fillValues();
+			colonnes[id].fillValues();
+			lignes[id].fillValues();
+		}
+	}
+	
+	
+	public void render() {
+		for(GroupedCases l : lignes) {
+			for(SimpleCase c : l.getSimpleCases()) {
+				System.out.print(c.getValue() + " ");
 			}
-			for(int i = 0; i < 9; i++) {
-				if(checkIfIsInTheColumn(i, number)) cleanColumn(i, number);
-				if(checkIfIsInTheLine(i, number)) cleanLine(i, number);
-			}
+			System.out.println();
 		}
+		System.out.println();
 	}
 	
-	// Regarde si la valeur passer en parametre est dans la ligne
-	private boolean checkIfIsInTheLine(int l, int value) {
- 		for(int c = 0; c < 9; c++) {
- 			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
- 		}
- 		return false;
- 	}
 	
-	// Nettoie une ligne
-	private void cleanLine(int l, int value) {
-		for(int c = 0; c < 9; c++) {
-			if(sudoBoard.getTab()[l][c].getValue() == 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
-		}
-	}
-	 	
-	// Regarde si la valeur passer en parametre est dans une colonne
-	private boolean checkIfIsInTheColumn(int c, int value) {
- 		for(int l = 0; l < 9; l++) {
- 			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
- 		}
- 		return false;
- 	}
 	
-	// Nettoie une colonne
-	private void cleanColumn(int c, int value) {
-		for(int l = 0; l < 9; l++) {
-			if(sudoBoard.getTab()[l][c].getValue() == 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
-		}
-	}
+	
+	
+	
+//	// Regarde si la valeur passer en parametre est dans la ligne
+//	private boolean checkIfIsInTheLine(int l, int value) {
+// 		for(int c = 0; c < 9; c++) {
+// 			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
+// 		}
+// 		return false;
+// 	}
+//	
+//	// Nettoie une ligne
+//	private void cleanLine(int l, int value) {
+//		for(int c = 0; c < 9; c++) {
+//			if(sudoBoard.getTab()[l][c].getValue() == 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
+//		}
+//	}
+//	 	
+//	// Regarde si la valeur passer en parametre est dans une colonne
+//	private boolean checkIfIsInTheColumn(int c, int value) {
+// 		for(int l = 0; l < 9; l++) {
+// 			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
+// 		}
+// 		return false;
+// 	}
+//	
+//	// Nettoie une colonne
+//	private void cleanColumn(int c, int value) {
+//		for(int l = 0; l < 9; l++) {
+//			if(sudoBoard.getTab()[l][c].getValue() == 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
+//		}
+//	}
 	
 	
 	
