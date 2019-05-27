@@ -16,7 +16,7 @@ public class SimpleCase {
 		this.posY = posY;
 
 		// Ajout de tous les nombres potentiels si la case n'a pas deja de valeur
-		if(this.value != 0) {
+		if(this.value == 0) {
 			for(int i = 1; i <= 9; i++) {
 				potentials.add(i);
 			}
@@ -28,6 +28,14 @@ public class SimpleCase {
 	public void removePotential(int number) {
 		potentials.remove((Integer) number);
 	}
+	
+	public void clearPotentials() {
+		potentials.clear();
+		
+	}
+	
+	
+	
 		
 		
 	// Getters && Setters
@@ -55,5 +63,6 @@ public class SimpleCase {
 	public ArrayList<Integer> getPotentials() {
 		return potentials;
 	}
+
 
 }

@@ -1,7 +1,5 @@
 package launchers;
 
-import java.util.ArrayList;
-
 import beans.GroupedCases;
 import beans.Board;
 import beans.SimpleCase;
@@ -12,6 +10,8 @@ public class Resolver {
 	private GroupedCases[] bigCases = new GroupedCases[9];
 	private GroupedCases[] colonnes = new GroupedCases[9];
 	private GroupedCases[] lignes = new GroupedCases[9];
+	
+	
 	
 	// Constructeur
 	public Resolver() {
@@ -44,12 +44,20 @@ public class Resolver {
 		}
 		
 		
-		
-		for(int i = 0; i < 20; i++) {
+		// boucle principale
+		//TODO trouver une methode pour terminer
+		while(!complete()) {
 			globalCleaning();
 			globalFilling();
 			render();
+			
+			for(int u : lignes[8].getSimpleCases().get(8).getPotentials()) {
+				System.out.println(u);
+			}
 		}
+		
+		
+		System.out.println("Sudoku résolu !");
 	}
 
 	
@@ -60,10 +68,17 @@ public class Resolver {
 	
 	// nettoyage global
 	private void globalCleaning() {
-		for(int id = 0; id < 9; id++) {
-			bigCases[id].cleanAll();
-			colonnes[id].cleanAll();
-			lignes[id].cleanAll();
+		for(int n = 1; n <= 9; n++) {
+			
+			for(GroupedCases ligne : lignes) {
+				if(ligne.checkForValue(n)) ligne.clean(n);
+			}
+			for(GroupedCases col : colonnes) {
+				if(col.checkForValue(n)) col.clean(n);
+			}
+			for(GroupedCases sqr : bigCases) {
+				if(sqr.checkForValue(n)) sqr.clean(n);
+			}
 		}
 	}
 
@@ -71,8 +86,7 @@ public class Resolver {
 	// remplissage global
 	private void globalFilling() {
 		for(int id = 0; id < 9; id++) {
-			bigCases[id].fillValues();
-			colonnes[id].fillValues();
+			// il faut juste parcours toutes les cases UNE fois pour les remplir (mais pour nettoyer faut faire les lignes, colonnes et carres)
 			lignes[id].fillValues();
 		}
 	}
@@ -89,44 +103,14 @@ public class Resolver {
 	}
 	
 	
-	
-	
-	
-	
-//	// Regarde si la valeur passer en parametre est dans la ligne
-//	private boolean checkIfIsInTheLine(int l, int value) {
-// 		for(int c = 0; c < 9; c++) {
-// 			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
-// 		}
-// 		return false;
-// 	}
-//	
-//	// Nettoie une ligne
-//	private void cleanLine(int l, int value) {
-//		for(int c = 0; c < 9; c++) {
-//			if(sudoBoard.getTab()[l][c].getValue() == 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
-//		}
-//	}
-//	 	
-//	// Regarde si la valeur passer en parametre est dans une colonne
-//	private boolean checkIfIsInTheColumn(int c, int value) {
-// 		for(int l = 0; l < 9; l++) {
-// 			if(sudoBoard.getTab()[l][c].getValue() == value) return true;
-// 		}
-// 		return false;
-// 	}
-//	
-//	// Nettoie une colonne
-//	private void cleanColumn(int c, int value) {
-//		for(int l = 0; l < 9; l++) {
-//			if(sudoBoard.getTab()[l][c].getValue() == 0) sudoBoard.getTab()[l][c].getPotentials().remove((Integer) value);
-//		}
-//	}
-	
-	
-	
-	
-	
+	public boolean complete() {
+		for(GroupedCases l : lignes) {
+			for(SimpleCase c : l.getSimpleCases()) {
+				if(c.getValue() == 0) return false;
+			}
+		}
+		return true;
+	}
 	
 	
 	
@@ -138,8 +122,8 @@ public class Resolver {
  	}
  	
  	
- 	
- 	
+
+
  	
  	
  	public static void main (String args[]) {
