@@ -2,14 +2,21 @@ package beans;
 
 import java.util.ArrayList;
 
+import launchers.Resolver;
+
 public class GroupedCases {
 
+	private Resolver parent;
+	private String type;
 	private ArrayList<SimpleCase> cases = new ArrayList<SimpleCase>();
 	// pour un gros carre, imaginer 3x3
 	// pour une ligne, imaginer 1x9
 	// pour une colonne, imaginer 9x1
 	
-	
+	public GroupedCases(launchers.Resolver resolver, String type) {
+		this.type = type;
+		this.parent = resolver;
+	}
 	
 	// Methodes
 	
@@ -29,13 +36,20 @@ public class GroupedCases {
 	// Nettoyage
 	public void clean(int number) {
 		for(SimpleCase c : cases) {
-			if(c.getValue() == 0) if(c.getPotentials().contains((Integer)(number))) c.removePotential((Integer) number);
+			if(c.getValue() == 0) if(c.getPotentials().contains((Integer)(number))) {
+				c.removePotential((Integer) number);
+				if(c.getPotentials().size() == 1) {
+					// creer une explication
+					parent.insertLineInChat(explication(c.getPosX(), c.getPosY(), c.getPotentials().get(0)));
+				}
+			}
 		}
 	}
 	
 	
 	// Remplissage des valeurs (par elimination)
-	public void fillValues() {
+	public int fillValues() {
+		int totalUpdate = 0;
 		for (int number = 1; number <= 9; number ++) {
 			ArrayList<SimpleCase> availables = new ArrayList<SimpleCase>();
 			// Récuperation de toutes les cases
@@ -47,9 +61,16 @@ public class GroupedCases {
 			if(availables.size() == 1) {
 				availables.get(0).setValue(number);
 				availables.get(0).clearPotentials();
+				totalUpdate++;
 			}
 			availables.clear();
 		}
+		return totalUpdate;
+	}
+	
+	// Creation de la phrase explicative
+	private String explication(int x, int y, int value) {
+		return String.format("La case %d:%d attend un %d car c'est la seule place dans %s", x, y, value, type);
 	}
 
 	// Getter 

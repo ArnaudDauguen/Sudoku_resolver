@@ -1,6 +1,9 @@
 package launchers;
 
 import beans.GroupedCases;
+
+import java.util.ArrayList;
+
 import beans.Board;
 import beans.SimpleCase;
 
@@ -11,6 +14,8 @@ public class Resolver {
 	private GroupedCases[] colonnes = new GroupedCases[9];
 	private GroupedCases[] lignes = new GroupedCases[9];
 	
+	private ArrayList<String> chat = new ArrayList<String>();
+	
 	// Constructeur
 	public Resolver() {
 		sudoBoard = new Board();
@@ -18,9 +23,9 @@ public class Resolver {
 		// Initialisation des cases
 		
 		for(int i = 0; i < 9; i++) {
-			bigCases[i] = new GroupedCases();
-			colonnes[i] = new GroupedCases();
-			lignes[i] = new GroupedCases();
+			bigCases[i] = new GroupedCases(this, "son carre");
+			colonnes[i] = new GroupedCases(this, "sa colonne");
+			lignes[i] = new GroupedCases(this, "sa ligne");
 		}
 		
 		
@@ -41,9 +46,10 @@ public class Resolver {
 		
 		
 		// Boucle principale
-		while(!complete()) {
+		int totalUpdate = -1;
+		while(!complete() && totalUpdate != 0) {
 			globalCleaning();
-			globalFilling();
+			totalUpdate = globalFilling();
 			render();
 			
 			for(int u : lignes[8].getSimpleCases().get(8).getPotentials()) {
@@ -51,8 +57,16 @@ public class Resolver {
 			}
 		}
 		
+		if(totalUpdate == 0) {
+			System.out.println("J'arrive pôoo");
+		}else {
+			System.out.println("Sudoku resolu !");
+		}
 		
-		System.out.println("Sudoku resolu !");
+		render();
+		
+		
+		
 	}
 
 	
@@ -79,11 +93,13 @@ public class Resolver {
 
 	
 	// Remplissage global
-	private void globalFilling() {
+	private int globalFilling() {
+		int totalUpdate = 0;
 		for(int id = 0; id < 9; id++) {
 			// Il faut juste parcourir toutes les cases UNE fois pour les remplir (mais pour nettoyer il faut faire les lignes, les colonnes et les carres)
-			lignes[id].fillValues();
+			totalUpdate += lignes[id].fillValues();
 		}
+		return totalUpdate;
 	}
 	
 	// Affichage de la grille du sudoku
@@ -97,7 +113,7 @@ public class Resolver {
 		System.out.println();
 	}
 	
-	// VÃ©rifie que toutes les cases soit remplis 
+	// Verifie que toutes les cases soit remplis 
 	public boolean complete() {
 		for(GroupedCases l : lignes) {
 			for(SimpleCase c : l.getSimpleCases()) {
@@ -105,6 +121,20 @@ public class Resolver {
 			}
 		}
 		return true;
+	}
+	
+	// Rajout d'un ligne dans le chat
+	public void insertLineInChat(String exp) {
+		chat.add(0, exp);
+		if(chat.size() > 20) chat.remove(20);
+		renderChat();
+	}
+	
+	// Affichage du chat
+	private void renderChat() {
+		for(String str : chat) {
+			System.out.println(str);
+		}
 	}
 	
 
