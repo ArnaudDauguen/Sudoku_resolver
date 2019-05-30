@@ -9,9 +9,9 @@ public class GroupedCases {
 	private Resolver parent;
 	private String type;
 	private ArrayList<SimpleCase> cases = new ArrayList<SimpleCase>();
-	// pour un gros carre, imaginer 3x3
-	// pour une ligne, imaginer 1x9
-	// pour une colonne, imaginer 9x1
+	// Pour un gros carre, imaginer 3x3
+	// Pour une ligne, imaginer 1x9
+	// Pour une colonne, imaginer 9x1
 	
 	public GroupedCases(launchers.Resolver resolver, String type) {
 		this.type = type;

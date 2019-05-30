@@ -45,8 +45,9 @@ public class Resolver {
 		}
 		
 		
-		// Boucle principale
 		int totalUpdate = -1;
+		
+		// Boucle principale
 		while(!complete() && totalUpdate != 0) {
 			globalCleaning();
 			totalUpdate = globalFilling();
@@ -58,14 +59,12 @@ public class Resolver {
 		}
 		
 		if(totalUpdate == 0) {
-			System.out.println("J'arrive pôoo");
+			System.out.println("J'arrive pooo");
 		}else {
 			System.out.println("Sudoku resolu !");
 		}
 		
 		render();
-		
-		
 		
 	}
 
@@ -123,7 +122,7 @@ public class Resolver {
 		return true;
 	}
 	
-	// Rajout d'un ligne dans le chat
+	// Rajout d'une ligne dans le chat
 	public void insertLineInChat(String exp) {
 		chat.add(0, exp);
 		if(chat.size() > 20) chat.remove(20);

@@ -25,7 +25,7 @@ public class SimpleCase {
 	
 	// Methodes
 	
-	// Supprime une valuer potentiel
+	// Supprime une valeur potentiel
 	public void removePotential(int number) {
 		potentials.remove((Integer) number);
 	}
