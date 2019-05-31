@@ -39,8 +39,6 @@ public class GroupedCases {
 			if(c.getValue() == 0) if(c.getPotentials().contains((Integer)(number))) {
 				c.removePotential((Integer) number);
 				if(c.getPotentials().size() == 1) {
-					// creer une explication
-					parent.insertLineInChat(explication(c.getPosX(), c.getPosY(), c.getPotentials().get(0)));
 				}
 			}
 		}
@@ -59,9 +57,12 @@ public class GroupedCases {
 				}
 			}
 			if(availables.size() == 1) {
-				availables.get(0).setValue(number);
-				availables.get(0).clearPotentials();
+				SimpleCase c = availables.get(0);
+				c.setValue(number);
+				c.clearPotentials();
 				totalUpdate++;
+				// creer une explication
+				parent.insertLineInChat(explication(c.getPosX(), c.getPosY(), number));
 			}
 			availables.clear();
 		}
@@ -70,7 +71,7 @@ public class GroupedCases {
 	
 	// Creation de la phrase explicative
 	private String explication(int x, int y, int value) {
-		return String.format("La case %d:%d attend un %d car c'est la seule place dans %s", x, y, value, type);
+		return String.format("La case %d:%d attend un %d car c'est la seule place pour un %d dans %s", x, y, value, value, type);
 	}
 
 	// Getter 

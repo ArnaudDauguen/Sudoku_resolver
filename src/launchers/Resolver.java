@@ -13,6 +13,7 @@ public class Resolver {
 	private GroupedCases[] bigCases = new GroupedCases[9];
 	private GroupedCases[] colonnes = new GroupedCases[9];
 	private GroupedCases[] lignes = new GroupedCases[9];
+	private int speed = 333;
 	
 	private ArrayList<String> chat = new ArrayList<String>();
 	
@@ -51,20 +52,19 @@ public class Resolver {
 		while(!complete() && totalUpdate != 0) {
 			globalCleaning();
 			totalUpdate = globalFilling();
+			insertLineInChat("*** Placement des nouveaux chiffres ***");
 			render();
-			
-			for(int u : lignes[8].getSimpleCases().get(8).getPotentials()) {
-				System.out.println(u);
-			}
 		}
 		
 		if(totalUpdate == 0) {
-			System.out.println("J'arrive pooo");
+			insertLineInChat("J'arrive pooo");
 		}else {
-			System.out.println("Sudoku resolu !");
+			insertLineInChat("Sudoku resolu !");
 		}
 		
 		render();
+		
+		
 		
 	}
 
@@ -125,8 +125,15 @@ public class Resolver {
 	// Rajout d'une ligne dans le chat
 	public void insertLineInChat(String exp) {
 		chat.add(0, exp);
-		if(chat.size() > 20) chat.remove(20);
-		renderChat();
+		//if(chat.size() > 20) chat.remove(20);
+		//renderChat();
+		System.out.println(chat.get(0));
+		try {
+			Thread.sleep(speed);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	// Affichage du chat
