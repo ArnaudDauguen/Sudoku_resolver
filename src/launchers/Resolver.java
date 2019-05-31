@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 import beans.Board;
 import beans.SimpleCase;
+import gui.MainFrame;
 
 public class Resolver {	
 
+	private MainFrame mainFrame;
 	private Board sudoBoard;
 	private GroupedCases[] bigCases = new GroupedCases[9];
 	private GroupedCases[] colonnes = new GroupedCases[9];
@@ -20,6 +22,7 @@ public class Resolver {
 	// Constructeur
 	public Resolver() {
 		sudoBoard = new Board();
+		mainFrame = new MainFrame(this);
 		
 		// Initialisation des cases
 		
@@ -50,10 +53,10 @@ public class Resolver {
 		
 		// Boucle principale
 		while(!complete() && totalUpdate != 0) {
+			render();
 			globalCleaning();
 			totalUpdate = globalFilling();
 			insertLineInChat("*** Placement des nouveaux chiffres ***");
-			render();
 		}
 		
 		if(totalUpdate == 0) {
@@ -106,6 +109,7 @@ public class Resolver {
 		for(GroupedCases l : lignes) {
 			for(SimpleCase c : l.getSimpleCases()) {
 				System.out.print(c.getValue() + " ");
+				mainFrame.getGrid()[c.getPosX()][c.getPosY()].setText((String) (c.getValue() == 0 ? " " : ""+ c.getValue()));
 			}
 			System.out.println();
 		}
@@ -124,25 +128,31 @@ public class Resolver {
 	
 	// Rajout d'une ligne dans le chat
 	public void insertLineInChat(String exp) {
-		chat.add(0, exp);
-		//if(chat.size() > 20) chat.remove(20);
-		//renderChat();
-		System.out.println(chat.get(0));
+//		chat.add(0, exp);
+//		if(chat.size() > 20) chat.remove(20);
 		try {
+			mainFrame.changeChat(exp + "\n");
 			Thread.sleep(speed);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			chat.add(0, "Une erreur est survenue :/");
 		}
 	}
 	
-	// Affichage du chat
-	private void renderChat() {
-		for(String str : chat) {
-			System.out.println(str);
-		}
-	}
 	
+	
+
+	
+ 	// Getter
+ 	
+ 	public Board getBoard() {
+ 		return sudoBoard;
+ 	}
+	
+ 	
+ 	
+ 	
+ 	
+ 	
 
  	// Main
  	
@@ -150,11 +160,6 @@ public class Resolver {
  		new Resolver();
  	}
  	
- 	// Getter
- 	
- 	public Board getBoard() {
- 		return sudoBoard;
- 	}
  	
  	
 

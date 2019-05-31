@@ -36,12 +36,17 @@ public class GroupedCases {
 	// Nettoyage
 	public void clean(int number) {
 		for(SimpleCase c : cases) {
-			if(c.getValue() == 0) if(c.getPotentials().contains((Integer)(number))) {
-				c.removePotential((Integer) number);
-				if(c.getPotentials().size() == 1) {
+			if(c.getValue() == 0) {
+				if(c.getPotentials().contains((Integer)(number))) {
+					c.removePotential((Integer) number);
+					if(c.getPotentials().size() == 1) {
+						// creer une explication
+						parent.insertLineInChat(explication(c.getPosX(), c.getPosY(), c.getPotentials().get(0)));
+					}
 				}
 			}
 		}
+		
 	}
 	
 	
@@ -50,7 +55,7 @@ public class GroupedCases {
 		int totalUpdate = 0;
 		for (int number = 1; number <= 9; number ++) {
 			ArrayList<SimpleCase> availables = new ArrayList<SimpleCase>();
-			// Récuperation de toutes les cases
+			// Recuperation de toutes les cases
 			for(SimpleCase c : cases) {
 				if(c.getValue() == 0 && c.getPotentials().contains((Integer) number)) {
 					availables.add(c);	
@@ -61,8 +66,6 @@ public class GroupedCases {
 				c.setValue(number);
 				c.clearPotentials();
 				totalUpdate++;
-				// creer une explication
-				parent.insertLineInChat(explication(c.getPosX(), c.getPosY(), number));
 			}
 			availables.clear();
 		}
