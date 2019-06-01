@@ -26,8 +26,8 @@ public class SimpleCase {
 	// Methodes
 	
 	// Supprime une valeur potentiel
-	public void removePotential(int number) {
-		potentials.remove((Integer) number);
+	public boolean removePotential(int number) {
+		return potentials.remove((Integer) number);
 	}
 	
 	// Vide l'ArrayList de valeurs potentiels
@@ -60,6 +60,10 @@ public class SimpleCase {
 	
 	public void setPotentials(ArrayList<Integer> potentials) {
 		this.potentials = potentials;
+	}
+
+	public void addPotentials(int nb) {
+		potentials.add(nb);
 	}
 	
 	public ArrayList<Integer> getPotentials() {
