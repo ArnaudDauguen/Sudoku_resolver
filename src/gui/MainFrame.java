@@ -31,7 +31,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.resolver = resolver;
 		
 		// Parametrage
-		this.setSize(1250, 500);
+		this.setSize(1000, 500);
 		this.setTitle("Sudoku solver - DAUGUEN Arnaud && GANS Quentin");
 		this.setResizable(false);
 		this.setVisible(true);
