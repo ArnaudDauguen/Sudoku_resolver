@@ -166,6 +166,11 @@ public class Resolver {
 		return true;
 	}
 	
+	// Creation des infos pour une case donnée
+	public void printCaseInfos(int x, int y) {
+		insertLineInChat(sudoBoard.getTab()[x][y].getInfos());
+	}
+	
 	// Rajout d'une ligne dans le chat
 	public void insertLineInChat(String exp) {
 		try {

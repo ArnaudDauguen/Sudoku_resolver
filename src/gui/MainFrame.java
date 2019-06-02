@@ -16,6 +16,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import javafx.scene.Parent;
 import launchers.Resolver;
 
 public class MainFrame extends JFrame implements ActionListener {
@@ -72,8 +73,9 @@ public class MainFrame extends JFrame implements ActionListener {
 
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		JButton btn = (JButton) e.getSource();
+		resolver.printCaseInfos((int) btn.getClientProperty("ligne"), (int) btn.getClientProperty("colonne"));
 		
 	}
 	

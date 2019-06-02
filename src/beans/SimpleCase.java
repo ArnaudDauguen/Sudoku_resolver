@@ -36,6 +36,21 @@ public class SimpleCase {
 		
 	}
 	
+	public String getInfos() {
+		String infos = String.format("La case %d:%d ", posX, posY);
+		if(value == 0) {
+			infos += "peut contenir [";
+			for(int i = 0; i < potentials.size(); i++) {
+				infos += potentials.get(i);
+				if(i < potentials.size() -1) infos += ",";
+			}
+			infos += "]";
+		}else {
+			infos += String.format("contient un %d", value);
+		}
+		return infos;
+	}
+	
 	
 	
 	
