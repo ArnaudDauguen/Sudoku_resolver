@@ -3,7 +3,6 @@ package beans;
 import java.util.ArrayList;
 
 import launchers.Resolver;
-import sun.java2d.pipe.SpanShapeRenderer.Simple;
 
 public class GroupedCases {
 
@@ -86,6 +85,7 @@ public class GroupedCases {
 			if(c.getValue() == 0) c.removePotential(nb);
 		}
 	}
+	
 	
 	
 	// Remplissage des cases

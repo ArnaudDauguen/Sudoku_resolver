@@ -60,7 +60,7 @@ public class Resolver {
 			globalCleaning();
 			// Remplissage
 			totalUpdate = globalFilling();
-			insertLineInChat("*** Une boucle de resolution a été terminé ***");
+			insertLineInChat("*** Une boucle de resolution a ete termine ***");
 		}
 		
 		
@@ -80,7 +80,7 @@ public class Resolver {
 
 			
 			// Suspens
-			String resultat = sum == 45 * 9 * 3 ? "Sudoku Resolu et verifié !" : "Quelque chose ne va pas :/";
+			String resultat = sum == 45 * 9 * 3 ? "Sudoku Resolu et verifie !" : "Quelque chose ne va pas :/";
 				// une ligne = 45 donc *9 pour toutes les lignes et *3 car lignes/colonnes/carres
 			insertLineInChat(resultat);
 			System.out.println(resultat);
@@ -114,7 +114,7 @@ public class Resolver {
 			
 		}
 		// Nettoyage logique
-		// Nous sommes contraints de limiter les nettoyages 'logiques' à seulement 1 type par tour sinon ils se confrontent
+		// Nous sommes contraints de limiter les nettoyages 'logiques' a seulement 1 type par tour sinon ils se confrontent
 		int nbUpdate = 0;
 		for(GroupedCases ligne : lignes) {
 			nbUpdate += ligne.logicalCleaning();
@@ -166,7 +166,7 @@ public class Resolver {
 		return true;
 	}
 	
-	// Creation des infos pour une case donnée
+	// Creation des infos pour une case donnï¿½e
 	public void printCaseInfos(int x, int y) {
 		insertLineInChat(sudoBoard.getTab()[x][y].getInfos());
 	}

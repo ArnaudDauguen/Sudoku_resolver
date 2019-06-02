@@ -16,7 +16,6 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-import javafx.scene.Parent;
 import launchers.Resolver;
 
 public class MainFrame extends JFrame implements ActionListener {
