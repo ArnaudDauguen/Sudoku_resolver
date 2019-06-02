@@ -1,10 +1,9 @@
 package launchers;
 
-import beans.GroupedCases;
-
 import java.util.ArrayList;
 
 import beans.Board;
+import beans.GroupedCases;
 import beans.SimpleCase;
 import gui.MainFrame;
 
@@ -60,7 +59,7 @@ public class Resolver {
 			globalCleaning();
 			// Remplissage
 			totalUpdate = globalFilling();
-			insertLineInChat("*** Une boucle de resolution a ete termine ***");
+			insertLineInChat("*** Une boucle de resolution a été termine ***");
 		}
 		
 		
@@ -166,7 +165,7 @@ public class Resolver {
 		return true;
 	}
 	
-	// Creation des infos pour une case donnï¿½e
+	// Creation des infos pour une case donnee
 	public void printCaseInfos(int x, int y) {
 		insertLineInChat(sudoBoard.getTab()[x][y].getInfos());
 	}

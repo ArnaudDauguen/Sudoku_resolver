@@ -87,7 +87,6 @@ public class GroupedCases {
 	}
 	
 	
-	
 	// Remplissage des cases
 	public int fillValues() {
 		int totalUpdate = tmpUpdate;

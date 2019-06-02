@@ -1,17 +1,15 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -33,7 +31,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.resolver = resolver;
 		
 		// Parametrage
-		this.setSize(1000, 500);
+		this.setSize(1250, 500);
 		this.setTitle("Sudoku solver - DAUGUEN Arnaud && GANS Quentin");
 		this.setResizable(false);
 		this.setVisible(true);
